@@ -1,10 +1,23 @@
 # fan-ma
 
-汎馬整合行銷有限公司 Fan Ma Integrated Marketing landing page prototype.
+汎馬整合行銷有限公司 Fan Ma Integrated Marketing website prototype.
 
 地址：台北市中山區南京東路三段101號4樓
 
 ## Preview
+
+This is a static multi-page website scaffold for migrating Facebook posts into a browsable case library.
+
+Pages:
+
+- `index.html`
+- `services.html`
+- `cases.html`
+- `case.html`
+- `faq.html`
+- `contact.html`
+
+Case placeholder data lives in `data.js`.
 
 Open `index.html` directly, or serve this folder with any static file server.
 
