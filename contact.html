@@ -21,8 +21,26 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="主要導覽">
         <a href="index.html" data-nav="home">首頁</a>
-        <a href="services.html" data-nav="services">服務項目</a>
-        <a href="cases.html" data-nav="cases">案例分享</a>
+        <div class="nav-dropdown">
+          <button class="nav-drop-button" type="button" data-nav="services" aria-expanded="false">服務項目</button>
+          <div class="dropdown-menu">
+            <a href="services.html#planning">活動企劃</a>
+            <a href="services.html#hardware">硬體統籌</a>
+            <a href="services.html#design">視覺設計</a>
+            <a href="services.html#media">影像紀錄</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button class="nav-drop-button" type="button" data-nav="cases" aria-expanded="false">案例分享</button>
+          <div class="dropdown-menu">
+            <a href="cases.html?category=演唱會案例">演唱會案例</a>
+            <a href="cases.html?category=記者會">記者會</a>
+            <a href="cases.html?category=Team Building">Team Building</a>
+            <a href="cases.html?category=公司活動">公司活動</a>
+            <a href="cases.html?category=品牌活動">品牌活動</a>
+            <a href="cases.html?category=開幕活動">開幕活動</a>
+          </div>
+        </div>
         <a href="faq.html" data-nav="faq">活動 FAQ</a>
         <a href="contact.html" data-nav="contact">聯絡我們</a>
         <a class="nav-cta" href="contact.html">立即諮詢</a>

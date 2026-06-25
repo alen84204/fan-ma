@@ -7,9 +7,26 @@ menuButton?.addEventListener("click", () => {
 });
 
 nav?.addEventListener("click", (event) => {
+  if (event.target instanceof HTMLButtonElement && event.target.classList.contains("nav-drop-button")) {
+    const dropdown = event.target.closest(".nav-dropdown");
+    const isOpen = dropdown.classList.toggle("is-open");
+    event.target.setAttribute("aria-expanded", String(isOpen));
+    document.querySelectorAll(".nav-dropdown").forEach((item) => {
+      if (item !== dropdown) {
+        item.classList.remove("is-open");
+        item.querySelector(".nav-drop-button")?.setAttribute("aria-expanded", "false");
+      }
+    });
+    return;
+  }
+
   if (event.target instanceof HTMLAnchorElement) {
     nav.classList.remove("is-open");
     menuButton?.setAttribute("aria-expanded", "false");
+    document.querySelectorAll(".nav-dropdown").forEach((item) => {
+      item.classList.remove("is-open");
+      item.querySelector(".nav-drop-button")?.setAttribute("aria-expanded", "false");
+    });
   }
 });
 
@@ -39,6 +56,11 @@ const params = new URLSearchParams(window.location.search);
 const selectedCategory = params.get("category") || "全部";
 const cases = window.FANMA_CASES || [];
 const categories = window.FANMA_CATEGORIES || [];
+const galleryImages = [
+  "assets/images/planning.jpg",
+  "assets/images/conference.jpg",
+  "assets/images/media-party.jpg",
+];
 
 document.querySelectorAll("[data-category-filters]").forEach((container) => {
   container.innerHTML = categories
@@ -106,11 +128,9 @@ if (detailRoot) {
             ${item.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}
           </ul>
           <h2>可替換圖片區</h2>
-          <div class="image-placeholder-grid">
-            <div>封面圖</div>
-            <div>現場照片 01</div>
-            <div>現場照片 02</div>
-            <div>現場照片 03</div>
+          <div class="image-placeholder-grid image-gallery-grid">
+            <img src="${item.image}" alt="${item.title}封面範例" loading="lazy" />
+            ${galleryImages.map((image, index) => `<img src="${image}" alt="${item.title}現場照片範例 ${index + 1}" loading="lazy" />`).join("")}
           </div>
         </article>
       </section>

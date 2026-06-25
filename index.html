@@ -27,8 +27,26 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="主要導覽">
         <a href="index.html" data-nav="home">首頁</a>
-        <a href="services.html" data-nav="services">服務項目</a>
-        <a href="cases.html" data-nav="cases">案例分享</a>
+        <div class="nav-dropdown">
+          <button class="nav-drop-button" type="button" data-nav="services" aria-expanded="false">服務項目</button>
+          <div class="dropdown-menu">
+            <a href="services.html#planning">活動企劃</a>
+            <a href="services.html#hardware">硬體統籌</a>
+            <a href="services.html#design">視覺設計</a>
+            <a href="services.html#media">影像紀錄</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button class="nav-drop-button" type="button" data-nav="cases" aria-expanded="false">案例分享</button>
+          <div class="dropdown-menu">
+            <a href="cases.html?category=演唱會案例">演唱會案例</a>
+            <a href="cases.html?category=記者會">記者會</a>
+            <a href="cases.html?category=Team Building">Team Building</a>
+            <a href="cases.html?category=公司活動">公司活動</a>
+            <a href="cases.html?category=品牌活動">品牌活動</a>
+            <a href="cases.html?category=開幕活動">開幕活動</a>
+          </div>
+        </div>
         <a href="faq.html" data-nav="faq">活動 FAQ</a>
         <a href="contact.html" data-nav="contact">聯絡我們</a>
         <a class="nav-cta" href="contact.html">立即諮詢</a>
@@ -85,25 +103,29 @@
           <p>參考活動公司常見分類，但改成汎馬可以長期維護的服務模組。</p>
         </div>
         <div class="service-grid">
-          <article class="service-card">
+          <article class="service-card planning">
+            <div class="service-visual" aria-hidden="true"></div>
             <span class="card-number">01</span>
             <h3>活動企劃</h3>
             <p>主題發想、流程規劃、節目安排、供應商協調與現場控場。</p>
             <a href="services.html#planning">查看項目</a>
           </article>
-          <article class="service-card">
+          <article class="service-card hardware">
+            <div class="service-visual" aria-hidden="true"></div>
             <span class="card-number">02</span>
             <h3>硬體統籌</h3>
             <p>舞台、燈光、音響、LED、帳篷、桌椅與活動特效。</p>
             <a href="services.html#hardware">查看項目</a>
           </article>
-          <article class="service-card">
+          <article class="service-card design">
+            <div class="service-visual" aria-hidden="true"></div>
             <span class="card-number">03</span>
             <h3>視覺設計</h3>
             <p>主視覺、背板、拍照區、指標輸出與會場佈置。</p>
             <a href="services.html#design">查看項目</a>
           </article>
-          <article class="service-card">
+          <article class="service-card media">
+            <div class="service-visual" aria-hidden="true"></div>
             <span class="card-number">04</span>
             <h3>影像紀錄</h3>
             <p>平面攝影、動態攝影、直播轉播、活動花絮與精華影片。</p>
@@ -119,14 +141,14 @@
           <p>讓 Facebook 上分散的貼文變成可瀏覽、可分類、可搜尋的網站內容。</p>
         </div>
         <div class="category-grid">
-          <a href="cases.html?category=春酒尾牙">春酒尾牙</a>
-          <a href="cases.html?category=企業活動">企業活動</a>
-          <a href="cases.html?category=品牌活動">品牌活動</a>
-          <a href="cases.html?category=開幕活動">開幕活動</a>
-          <a href="cases.html?category=家庭日">家庭日</a>
-          <a href="cases.html?category=發表記者會">發表記者會</a>
-          <a href="cases.html?category=政府協會活動">政府 / 協會活動</a>
-          <a href="cases.html?category=展覽市集">展覽 / 市集</a>
+          <a class="category-card concert" href="cases.html?category=演唱會案例"><span>演唱會案例</span></a>
+          <a class="category-card press" href="cases.html?category=記者會"><span>記者會</span></a>
+          <a class="category-card team" href="cases.html?category=Team Building"><span>Team Building</span></a>
+          <a class="category-card company" href="cases.html?category=公司活動"><span>公司活動</span></a>
+          <a class="category-card brand" href="cases.html?category=品牌活動"><span>品牌活動</span></a>
+          <a class="category-card opening" href="cases.html?category=開幕活動"><span>開幕活動</span></a>
+          <a class="category-card banquet" href="cases.html?category=春酒尾牙"><span>春酒尾牙</span></a>
+          <a class="category-card exhibition" href="cases.html?category=展覽市集"><span>展覽 / 市集</span></a>
         </div>
       </section>
 
