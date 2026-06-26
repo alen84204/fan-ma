@@ -69,6 +69,7 @@ const galleryImages = [
   "assets/images/conference.jpg",
   "assets/images/media-party.jpg",
 ];
+let searchQuery = "";
 
 document.querySelectorAll("[data-category-filters]").forEach((container) => {
   container.innerHTML = categories
@@ -80,12 +81,52 @@ document.querySelectorAll("[data-category-filters]").forEach((container) => {
     .join("");
 });
 
-document.querySelectorAll("[data-case-list]").forEach((container) => {
-  const limit = Number(container.dataset.limit || 0);
+const filterCases = () => {
   const filtered = selectedCategory === "全部" ? cases : cases.filter((item) => item.category === selectedCategory);
-  const visibleCases = limit ? filtered.slice(0, limit) : filtered;
-  container.innerHTML = visibleCases.map(caseCard).join("");
+  if (!searchQuery) return filtered;
+
+  return filtered.filter((item) => {
+    const content = [
+      item.title,
+      item.category,
+      item.client,
+      item.location,
+      item.people,
+      item.summary,
+      ...item.services,
+      ...item.highlights,
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return content.includes(searchQuery);
+  });
+};
+
+const renderCaseLists = () => {
+  const filtered = filterCases();
+
+  document.querySelectorAll("[data-case-list]").forEach((container) => {
+    const limit = Number(container.dataset.limit || 0);
+    const visibleCases = limit ? filtered.slice(0, limit) : filtered;
+    container.innerHTML = visibleCases.length
+      ? visibleCases.map(caseCard).join("")
+      : `<div class="empty-state">目前沒有符合條件的案例，請調整搜尋或分類。</div>`;
+  });
+
+  document.querySelectorAll("[data-case-count]").forEach((countNode) => {
+    countNode.textContent = `目前顯示 ${filtered.length} 則案例`;
+  });
+};
+
+document.querySelectorAll("[data-case-search]").forEach((input) => {
+  input.addEventListener("input", () => {
+    searchQuery = input.value.trim().toLowerCase();
+    renderCaseLists();
+  });
 });
+
+renderCaseLists();
 
 const detailRoot = document.querySelector("[data-case-detail]");
 if (detailRoot) {
@@ -122,8 +163,9 @@ if (detailRoot) {
             <div><dt>地點</dt><dd>${item.location}</dd></div>
             <div><dt>人數</dt><dd>${item.people}</dd></div>
             <div><dt>分類</dt><dd>${item.category}</dd></div>
+            <div><dt>案例來源</dt><dd>${item.sourceLabel}</dd></div>
           </dl>
-          <a class="button secondary" href="${item.facebook}">活動紀錄連結</a>
+          <a class="button secondary" href="${item.sourceUrl}" target="_blank" rel="noreferrer">查看粉專來源</a>
         </aside>
         <article class="case-story">
           <span class="section-label">Event story</span>

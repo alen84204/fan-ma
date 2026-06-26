@@ -1,3 +1,6 @@
+window.FANMA_FACEBOOK_PAGE =
+  "https://www.facebook.com/p/%E6%B1%8E%E9%A6%AC%E6%95%B4%E5%90%88%E8%A1%8C%E9%8A%B7-61558782960194/";
+
 window.FANMA_CATEGORIES = [
   "全部",
   "演唱會案例",
@@ -169,3 +172,9 @@ window.FANMA_CASES = [
     facebook: "#",
   },
 ];
+
+window.FANMA_CASES = window.FANMA_CASES.map((item) => ({
+  ...item,
+  sourceLabel: "汎馬 Facebook 粉專活動紀錄",
+  sourceUrl: item.facebook === "#" ? window.FANMA_FACEBOOK_PAGE : item.facebook,
+}));

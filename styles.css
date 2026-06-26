@@ -402,6 +402,13 @@ p {
   background: var(--soft);
 }
 
+.solution-section,
+.deliverables-section,
+.source-note-section,
+.service-summary {
+  background: var(--paper);
+}
+
 .service-detail-section.alt {
   background: var(--paper);
 }
@@ -417,11 +424,145 @@ p {
 .contact-panel,
 .contact-form,
 details,
-.case-facts {
+.case-facts,
+.solution-card,
+.source-note,
+.summary-grid article {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 14px 34px rgba(23, 33, 31, 0.06);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.solution-card {
+  min-height: 270px;
+  padding: 26px;
+}
+
+.solution-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 34px;
+  color: var(--white);
+  background: var(--green);
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.solution-card p {
+  margin: 12px 0 22px;
+}
+
+.solution-card a {
+  color: var(--green);
+  font-weight: 900;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summary-grid article {
+  padding: 28px;
+}
+
+.summary-grid span {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.summary-grid h2 {
+  margin-top: 16px;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.deliverable-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.deliverable-grid div {
+  min-height: 170px;
+  padding: 26px;
+  background: var(--white);
+}
+
+.deliverable-grid strong,
+.deliverable-grid span {
+  display: block;
+}
+
+.deliverable-grid strong {
+  color: var(--green-dark);
+  font-size: 22px;
+}
+
+.deliverable-grid span {
+  margin-top: 42px;
+  color: var(--muted);
+}
+
+.source-note {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.6fr) auto;
+  gap: 24px;
+  align-items: center;
+  padding: 28px;
+}
+
+.source-note h2 {
+  font-size: clamp(26px, 3vw, 40px);
+}
+
+.source-note p {
+  margin: 0;
+}
+
+.case-toolbar {
+  display: grid;
+  grid-template-columns: minmax(280px, 520px) auto;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.case-toolbar label {
+  color: var(--ink);
+}
+
+.case-toolbar p {
+  justify-self: end;
+  margin: 0 0 13px;
+  color: var(--green-dark);
+  font-weight: 900;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 34px;
+  color: var(--muted);
+  background: var(--white);
+  border: 1px dashed #b9c9c3;
+  border-radius: 8px;
+  font-weight: 900;
+  text-align: center;
 }
 
 .service-card {
@@ -961,7 +1102,9 @@ textarea {
 @media (max-width: 1080px) {
   .service-grid,
   .category-grid,
-  .timeline {
+  .timeline,
+  .solution-grid,
+  .deliverable-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1040,8 +1183,16 @@ textarea {
   .service-detail,
   .contact-page,
   .case-detail-layout,
-  .case-hero {
+  .case-hero,
+  .source-note,
+  .summary-grid,
+  .case-toolbar {
     grid-template-columns: 1fr;
+  }
+
+  .case-toolbar p {
+    justify-self: start;
+    margin-bottom: 0;
   }
 
   .case-facts {
@@ -1092,7 +1243,9 @@ textarea {
   .timeline,
   .case-list,
   .case-list.compact,
-  .image-placeholder-grid {
+  .image-placeholder-grid,
+  .solution-grid,
+  .deliverable-grid {
     grid-template-columns: 1fr;
   }
 
