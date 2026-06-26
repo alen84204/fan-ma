@@ -30,6 +30,14 @@ nav?.addEventListener("click", (event) => {
   }
 });
 
+const mobileAction = document.createElement("div");
+mobileAction.className = "mobile-action-bar";
+mobileAction.innerHTML = `
+  <a href="contact.html">立即諮詢</a>
+  <a href="https://www.facebook.com/p/%E6%B1%8E%E9%A6%AC%E6%95%B4%E5%90%88%E8%A1%8C%E9%8A%B7-61558782960194/" target="_blank" rel="noreferrer">Facebook 聯絡</a>
+`;
+document.body.appendChild(mobileAction);
+
 const currentPage = document.body.dataset.page;
 document.querySelector(`[data-nav="${currentPage}"]`)?.classList.add("is-active");
 
@@ -38,7 +46,7 @@ const formatServices = (services) => services.map((service) => `<span>${service}
 const caseCard = (item) => `
   <article class="case-card-item">
     <a class="case-thumb" href="case.html?case=${item.slug}" aria-label="查看${item.title}">
-      <img src="${item.image}" alt="${item.title}範例圖片" loading="lazy" />
+      <img src="${item.image}" alt="${item.title}活動照片" loading="lazy" />
     </a>
     <div class="case-card-body">
       <div class="case-meta">
@@ -97,7 +105,7 @@ if (detailRoot) {
     document.title = `${item.title} | 汎馬整合行銷有限公司`;
     detailRoot.innerHTML = `
       <section class="case-hero">
-        <img src="${item.image}" alt="${item.title}範例圖片" />
+        <img src="${item.image}" alt="${item.title}活動照片" />
         <div class="case-hero-content">
           <span class="section-label">${item.category}</span>
           <h1>${item.title}</h1>
@@ -115,33 +123,33 @@ if (detailRoot) {
             <div><dt>人數</dt><dd>${item.people}</dd></div>
             <div><dt>分類</dt><dd>${item.category}</dd></div>
           </dl>
-          <a class="button secondary" href="${item.facebook}">原 Facebook 連結占位</a>
+          <a class="button secondary" href="${item.facebook}">活動紀錄連結</a>
         </aside>
         <article class="case-story">
-          <span class="section-label">Placeholder copy</span>
-          <h2>活動內容占位</h2>
+          <span class="section-label">Event story</span>
+          <h2>活動概述</h2>
           <p>
-            這裡預留給行銷後續改寫正式案例內容。可以放入 Facebook 原貼文摘要、活動背景、客戶需求、汎馬負責的服務範圍、現場亮點與活動成果。
+            此案例以活動類型、服務項目與執行亮點為主，協助企業窗口快速理解相近活動可如何規劃。實際合作內容會依客戶需求、場地條件與預算調整。
           </p>
           <h2>活動亮點</h2>
           <ul>
             ${item.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}
           </ul>
-          <h2>可替換圖片區</h2>
+          <h2>活動照片</h2>
           <div class="image-placeholder-grid image-gallery-grid">
-            <img src="${item.image}" alt="${item.title}封面範例" loading="lazy" />
-            ${galleryImages.map((image, index) => `<img src="${image}" alt="${item.title}現場照片範例 ${index + 1}" loading="lazy" />`).join("")}
+            <img src="${item.image}" alt="${item.title}封面照片" loading="lazy" />
+            ${galleryImages.map((image, index) => `<img src="${image}" alt="${item.title}現場照片 ${index + 1}" loading="lazy" />`).join("")}
           </div>
         </article>
       </section>
 
       <section class="contact-band">
         <div>
-          <span class="section-label">Next case</span>
-          <h2>想建立更多類似案例？</h2>
-          <p>提供照片、貼文連結與客戶資料後，即可依這個模板逐篇替換。</p>
+          <span class="section-label">Contact</span>
+          <h2>想規劃類似活動？</h2>
+          <p>提供活動日期、地點、人數與需求方向，汎馬可以協助整理適合的活動方案。</p>
         </div>
-        <a class="button primary light" href="contact.html">提供案例資料</a>
+        <a class="button primary light" href="contact.html">聯絡汎馬</a>
       </section>
     `;
   }

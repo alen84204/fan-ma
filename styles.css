@@ -954,6 +954,10 @@ textarea {
   font-weight: 900;
 }
 
+.mobile-action-bar {
+  display: none;
+}
+
 @media (max-width: 1080px) {
   .service-grid,
   .category-grid,
@@ -1062,6 +1066,10 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  body {
+    padding-bottom: 74px;
+  }
+
   .site-header {
     min-height: 74px;
   }
@@ -1108,5 +1116,35 @@ textarea {
 
   .site-footer > div + div {
     margin-top: 14px;
+  }
+
+  .mobile-action-bar {
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    padding: 10px;
+    background: rgba(7, 22, 19, 0.92);
+    box-shadow: 0 -12px 28px rgba(7, 22, 19, 0.2);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-action-bar a {
+    display: grid;
+    place-items: center;
+    min-height: 48px;
+    color: var(--white);
+    background: var(--green);
+    border-radius: 8px;
+    font-weight: 900;
+  }
+
+  .mobile-action-bar a + a {
+    color: var(--green-dark);
+    background: var(--white);
   }
 }
