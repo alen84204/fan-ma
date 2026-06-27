@@ -46,7 +46,7 @@ const formatServices = (services) => services.map((service) => `<span>${service}
 const caseCard = (item) => `
   <article class="case-card-item">
     <a class="case-thumb" href="case.html?case=${item.slug}" aria-label="查看${item.title}">
-      <img src="${item.image}" alt="${item.title}活動照片" loading="lazy" />
+      <img src="${item.image}" alt="${item.title}${item.imageIsPlaceholder ? "範例圖片" : "活動照片"}" loading="lazy" />
     </a>
     <div class="case-card-body">
       <div class="case-meta">
@@ -95,6 +95,7 @@ const filterCases = () => {
       item.summary,
       ...item.services,
       ...item.highlights,
+      ...(item.tags || []),
     ]
       .join(" ")
       .toLowerCase();
@@ -143,10 +144,15 @@ if (detailRoot) {
       </section>
     `;
   } else {
+    const storyParagraphs = item.story || [
+      "此案例以活動類型、服務項目與執行亮點為主，協助企業窗口快速理解相近活動可如何規劃。實際合作內容會依客戶需求、場地條件與預算調整。",
+    ];
+    const detailGallery = item.galleryImages || [item.image, ...galleryImages];
+    const imageAltLabel = item.imageIsPlaceholder ? "範例圖片" : "現場照片";
     document.title = `${item.title} | 汎馬整合行銷有限公司`;
     detailRoot.innerHTML = `
       <section class="case-hero">
-        <img src="${item.image}" alt="${item.title}活動照片" />
+        <img src="${item.image}" alt="${item.title}${imageAltLabel}" />
         <div class="case-hero-content">
           <span class="section-label">${item.category}</span>
           <h1>${item.title}</h1>
@@ -159,9 +165,10 @@ if (detailRoot) {
         <aside class="case-facts">
           <h2>案例欄位</h2>
           <dl>
-            <div><dt>客戶</dt><dd>${item.client}</dd></div>
+            <div><dt>${item.clientLabel || "客戶"}</dt><dd>${item.client}</dd></div>
             <div><dt>地點</dt><dd>${item.location}</dd></div>
             <div><dt>人數</dt><dd>${item.people}</dd></div>
+            ${item.status ? `<div><dt>專案狀態</dt><dd>${item.status}</dd></div>` : ""}
             <div><dt>分類</dt><dd>${item.category}</dd></div>
             <div><dt>案例來源</dt><dd>${item.sourceLabel}</dd></div>
           </dl>
@@ -169,18 +176,16 @@ if (detailRoot) {
         </aside>
         <article class="case-story">
           <span class="section-label">Event story</span>
-          <h2>活動概述</h2>
-          <p>
-            此案例以活動類型、服務項目與執行亮點為主，協助企業窗口快速理解相近活動可如何規劃。實際合作內容會依客戶需求、場地條件與預算調整。
-          </p>
+          <h2>${item.storyTitle || "活動概述"}</h2>
+          ${storyParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
           <h2>活動亮點</h2>
           <ul>
             ${item.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}
           </ul>
           <h2>活動照片</h2>
+          ${item.imageNote ? `<p class="image-note">${item.imageNote}</p>` : ""}
           <div class="image-placeholder-grid image-gallery-grid">
-            <img src="${item.image}" alt="${item.title}封面照片" loading="lazy" />
-            ${galleryImages.map((image, index) => `<img src="${image}" alt="${item.title}現場照片 ${index + 1}" loading="lazy" />`).join("")}
+            ${detailGallery.map((image, index) => `<img src="${image}" alt="${item.title}${imageAltLabel} ${index + 1}" loading="lazy" />`).join("")}
           </div>
         </article>
       </section>

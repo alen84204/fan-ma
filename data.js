@@ -16,6 +16,36 @@ window.FANMA_CATEGORIES = [
 
 window.FANMA_CASES = [
   {
+    slug: "2026-anti-drug-education-exhibition",
+    title: "花蓮反毒教育特展｜解癮－解開毒品上癮的真相",
+    category: "展覽市集",
+    clientLabel: "相關單位",
+    client: "教育部／中國信託反毒教育基金會／教育部花蓮聯絡處",
+    location: "花蓮縣",
+    people: "參觀人次待補",
+    status: "已完成・結案案例",
+    services: ["專案企劃", "活動設計", "人力策略", "展覽執行"],
+    summary: "汎馬完成 115 年度花蓮「解癮－解開毒品上癮的真相」反毒教育特展，從專案企劃、活動設計到人力策略統籌，以大型展覽經驗協助正確觀念被看見。",
+    storyTitle: "用專業跨界，打造深具意義的反毒教育特展",
+    story: [
+      "汎馬整合行銷的專案經驗不僅獲得企業客戶肯定，也持續參與公部門與教育推廣專案。本案為 115 年度花蓮「解癮－解開毒品上癮的真相」2026 反毒教育特展結案紀錄。",
+      "這不只是一場展覽，更是傳遞正確價值觀、發揮社會影響力的重要任務。從專案企劃、活動設計到人力策略統籌，我們將過往執行大型展覽活動的經驗投入本次特展，並完成各項現場執行工作。",
+      "無論是企業活動或公共議題特展，汎馬都以一致的專業標準整合執行細節，讓每一場活動不只順利完成，也能清楚傳達它所承載的意義。",
+    ],
+    highlights: [
+      "以反毒教育為核心，兼顧知識傳遞與公共影響力",
+      "整合專案企劃、活動設計及現場執行",
+      "依展覽需求規劃人力配置與工作策略",
+      "運用大型展覽經驗，建立完整的執行架構",
+    ],
+    tags: ["教育部", "中國信託反毒教育基金會", "教育部花蓮聯絡處", "跨界行銷", "展覽活動"],
+    image: "assets/images/exhibition.jpg",
+    imageIsPlaceholder: true,
+    imageNote: "目前使用商用範例圖片，待汎馬提供本案活動照片後替換。",
+    sourceLabel: "汎馬提供之 Facebook 貼文內容",
+    facebook: "#",
+  },
+  {
     slug: "company-a-year-end-party",
     title: "企業A 年度春酒尾牙活動",
     category: "春酒尾牙",
@@ -175,6 +205,6 @@ window.FANMA_CASES = [
 
 window.FANMA_CASES = window.FANMA_CASES.map((item) => ({
   ...item,
-  sourceLabel: "汎馬 Facebook 粉專活動紀錄",
+  sourceLabel: item.sourceLabel || "汎馬 Facebook 粉專活動紀錄",
   sourceUrl: item.facebook === "#" ? window.FANMA_FACEBOOK_PAGE : item.facebook,
 }));

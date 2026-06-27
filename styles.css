@@ -1045,6 +1045,17 @@ textarea {
   margin-top: 12px;
 }
 
+.case-story .image-note {
+  display: inline-flex;
+  padding: 9px 12px;
+  margin: 10px 0 0;
+  color: var(--green-dark);
+  background: #e7f1ed;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .image-placeholder-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
