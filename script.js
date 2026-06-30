@@ -34,7 +34,7 @@ const mobileAction = document.createElement("div");
 mobileAction.className = "mobile-action-bar";
 mobileAction.innerHTML = `
   <a href="contact.html">立即諮詢</a>
-  <a href="https://www.facebook.com/p/%E6%B1%8E%E9%A6%AC%E6%95%B4%E5%90%88%E8%A1%8C%E9%8A%B7-61558782960194/" target="_blank" rel="noreferrer">Facebook 聯絡</a>
+  <a href="https://www.facebook.com/p/%E6%B1%8E%E9%A6%AC%E6%95%B4%E5%90%88%E8%A1%8C%E9%8A%B7-61558782960194/" target="_blank" rel="noreferrer">粉專聯絡</a>
 `;
 document.body.appendChild(mobileAction);
 
@@ -62,7 +62,7 @@ const caseCard = (item) => `
 
 const params = new URLSearchParams(window.location.search);
 const selectedCategory = params.get("category") || "全部";
-const cases = window.FANMA_CASES || [];
+const cases = (window.FANMA_CASES || []).filter((item) => item.published === true);
 const categories = window.FANMA_CATEGORIES || [];
 const galleryImages = [
   "assets/images/planning.jpg",
@@ -112,7 +112,11 @@ const renderCaseLists = () => {
     const visibleCases = limit ? filtered.slice(0, limit) : filtered;
     container.innerHTML = visibleCases.length
       ? visibleCases.map(caseCard).join("")
-      : `<div class="empty-state">目前沒有符合條件的案例，請調整搜尋或分類。</div>`;
+      : `<div class="empty-state">
+          <strong>這一類案例正在整理中</strong>
+          <span>網站只公開資料已確認的專案；其他活動紀錄可先至 Facebook 粉專瀏覽。</span>
+          <a href="${window.FANMA_FACEBOOK_PAGE}" target="_blank" rel="noreferrer">查看粉專活動紀錄</a>
+        </div>`;
   });
 
   document.querySelectorAll("[data-case-count]").forEach((countNode) => {

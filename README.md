@@ -21,6 +21,8 @@ Case placeholder data lives in `data.js`.
 
 Sample images are stored in `assets/images`. They are temporary Unsplash-based placeholders for layout review and should be replaced with real Fan Ma project photos later.
 
+`exhibition-space.jpg`: photo by Adrien Olichon on Unsplash, used under the Unsplash License.
+
 Open `index.html` directly, or serve this folder with any static file server.
 
 ```powershell

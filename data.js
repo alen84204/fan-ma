@@ -17,6 +17,7 @@ window.FANMA_CATEGORIES = [
 window.FANMA_CASES = [
   {
     slug: "2026-anti-drug-education-exhibition",
+    published: true,
     title: "花蓮反毒教育特展｜解癮－解開毒品上癮的真相",
     category: "展覽市集",
     clientLabel: "相關單位",
@@ -39,7 +40,7 @@ window.FANMA_CASES = [
       "運用大型展覽經驗，建立完整的執行架構",
     ],
     tags: ["教育部", "中國信託反毒教育基金會", "教育部花蓮聯絡處", "跨界行銷", "展覽活動"],
-    image: "assets/images/exhibition.jpg",
+    image: "assets/images/exhibition-space.jpg",
     imageIsPlaceholder: true,
     imageNote: "目前使用商用範例圖片，待汎馬提供本案活動照片後替換。",
     sourceLabel: "汎馬提供之 Facebook 貼文內容",
